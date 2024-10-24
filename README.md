@@ -1,6 +1,7 @@
 # MathPause
 
-Cross-platform app that proposes a math challenge before using social media.
+MathPause is a cross-platform app that proposes a math challenge before accessing social media. This project is being developed collaboratively by @MIGUELBACHILLERGH55 and myself, @tomasmoralessp. The goal of this project has two main aspects: first, to reduce the time spent on social media; and second, to provide a fun, easy-to-use tool that relies on spaced repetition techniques to study, practice, and improve mathematical skills.
+ 
 
 ## Features
 
