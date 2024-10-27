@@ -1,0 +1,37 @@
+{
+  "name": "mathpause",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "MathPause presents users with a quick math problem whenever they try to open a social media app, encouraging focus and reducing screen time. Solve the challenge to access social media, making every scroll more mindful.",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Tomasmoralessp/MathPause.git"
+  },
+  "keywords": [
+    "Math",
+    "Mindfull",
+    "Phoneless",
+    "Responsible",
+    "Learn"
+  ],
+  "author": "Tomasmoralessp, MIGUELBACHILLERGH55",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Tomasmoralessp/MathPause/issues"
+  },
+  "homepage": "https://github.com/Tomasmoralessp/MathPause#readme",
+  "devDependencies": {
+    "standard": "^17.1.2"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "4.21.1"
+  },
+  "eslintConfig": {
+    "extends": "standard"
+  }
+}
