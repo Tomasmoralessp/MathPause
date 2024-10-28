@@ -1,17 +1,46 @@
 ### Get all problems
+GET http://localhost:1234/problems
 
+### Get all problems by type, topic, or academic level
+GET http://localhost:1234/problems?problemType=Factorization
 
-### Get problem by id
+### Get all problems multifiltered 
+GET http://localhost:1234/problems?gradeLevel=high_school&topic=Algebra
 
+### Get problem by id 
+GET http://localhost:1234/problems?id=1084c8f6-8cfa-4b41-85e1-8d5742b14b8b
 
+### Get a random problem
+GET http://localhost:1234/problems/random
 
-### Get problems by type
-
-
-### Get problems by academic level 
+### Get a random filtered problem
+GET http://localhost:1234/problems/random?topic=Algebra&gradeLevel=high_school
 
 ### Post a new problem
+POST http://localhost:1234/problems
+Content-Type: application/json
+
+{
+  "instructions": "Solve the integral.",
+  "expression": "\\int x^3 \\, dx",
+  "gradeLevel": "undergraduate",
+  "topic": "calculus",
+  "problemType": "immediate_integral",
+  "created": "2024-10-28T12:00:00Z",
+  "updated": "2024-10-28T12:00:00Z",
+  "solution": "\\frac{1}{4} x^4 + C"
+}
 
 ### Update a problem
+PATCH http://localhost:1234/problems/1084c8f6-8cfa-4b41-85e1-8d5742b14b8b
+Content-Type: application/json
+
+{
+  "instructions": "Find the integral of the function.",
+  "expression": "\\int x^2 \\, dx",
+  "updated": "2024-10-29T12:00:00Z",
+  "solution": "\\frac{1}{3} x^3 + C"
+}
 
 ### Delete a problem
+DELETE http://localhost:1234/problems/1084c8f6-8cfa-4b41-85e1-8d5742b14b8b

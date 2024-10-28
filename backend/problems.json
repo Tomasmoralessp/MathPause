@@ -1,0 +1,222 @@
+[
+    {
+        "id": "6f8ae0b7-28d6-4691-b234-b9d8e49f7e54",
+        "instructions": "Solve the integral.",
+        "expression": "\\int x^2 \\, dx",
+        "gradeLevel": "undergraduate",
+        "topic": "calculus",
+        "problemType": "immediate_integral",
+        "created": "2024-10-28",
+        "updated": "2024-10-28",
+        "solution": "\\frac{1}{3} x^3 + C"
+    },
+    {
+        "id": "e3d8a9a4-6ae7-42e9-87d4-6b07ae8e63f4",
+        "instructions": "Factorize the expression.",
+        "expression": "x^2 - 5x + 6",
+        "gradeLevel": "high_school",
+        "topic": "algebra",
+        "problemType": "factorization",
+        "created": "2024-10-28",
+        "updated": "2024-10-28",
+        "solution": "(x - 2)(x - 3)"
+    },
+    {
+        "id": "b86b2e8d-4783-4e3e-b4f5-bcbf4a35cf1b",
+        "instructions": "Expand the expression.",
+        "expression": "(x + 3)^2",
+        "gradeLevel": "high_school",
+        "topic": "algebra",
+        "problemType": "expansion",
+        "created": "2024-10-28",
+        "updated": "2024-10-28",
+        "solution": "x^2 + 6x + 9"
+    },
+    {
+        "id": "d62d7b24-1b57-47f7-9277-b1f865dcfe13",
+        "instructions": "Simplify the expression.",
+        "expression": "\\frac{x^2 - 9}{x - 3}",
+        "gradeLevel": "high_school",
+        "topic": "algebra",
+        "problemType": "simplification",
+        "created": "2024-10-28",
+        "updated": "2024-10-28",
+        "solution": "x + 3"
+    },
+    {
+        "id": "ac12b64b-2349-4f44-9e43-4239d450bb7d",
+        "instructions": "Calculate the limit.",
+        "expression": "\\lim_{x \\to 2} (x^2 - 4)/(x - 2)",
+        "gradeLevel": "undergraduate",
+        "topic": "calculus",
+        "problemType": "limits",
+        "created": "2024-10-28",
+        "updated": "2024-10-28",
+        "solution": "4"
+    },
+    {
+        "id": "c8f71c44-6f3d-4847-b6b3-8b7cd1baf88e",
+        "instructions": "Evaluate the series sum.",
+        "expression": "\\sum_{n=1}^{\\infty} \\frac{1}{n^2}",
+        "gradeLevel": "undergraduate",
+        "topic": "calculus",
+        "problemType": "series",
+        "created": "2024-10-28",
+        "updated": "2024-10-28",
+        "solution": "\\frac{\\pi^2}{6}"
+    },
+    {
+        "id": "7a6a29e6-2f7e-4a1b-9a95-5ab35b63db2d",
+        "instructions": "Differentiate with respect to x.",
+        "expression": "\\frac{d}{dx} (x^3)",
+        "gradeLevel": "undergraduate",
+        "topic": "calculus",
+        "problemType": "immediate_derivative",
+        "created": "2024-10-28",
+        "updated": "2024-10-28",
+        "solution": "3x^2"
+    },
+    {
+        "id": "49d30b3f-034d-420b-99fc-f1e333e45712",
+        "instructions": "Solve the definite integral.",
+        "expression": "\\int_0^1 x^2 \\, dx",
+        "gradeLevel": "undergraduate",
+        "topic": "calculus",
+        "problemType": "definite_integral",
+        "created": "2024-10-28",
+        "updated": "2024-10-28",
+        "solution": "\\frac{1}{3}"
+    },
+    {
+        "id": "108d6c6e-2c4a-43ea-a57d-223ca564d09d",
+        "instructions": "Solve the basic operation.",
+        "expression": "15 + 8 - 6",
+        "gradeLevel": "elementary",
+        "topic": "arithmetic",
+        "problemType": "basic_operations",
+        "created": "2024-10-28",
+        "updated": "2024-10-28",
+        "solution": "17"
+    },
+    {
+        "id": "ed9cb7c3-95fa-4c17-9f90-e2dff5176c24",
+        "instructions": "Convert the percentage to a decimal.",
+        "expression": "75%",
+        "gradeLevel": "middle_school",
+        "topic": "arithmetic",
+        "problemType": "percentages",
+        "created": "2024-10-28",
+        "updated": "2024-10-28",
+        "solution": "0.75"
+    },
+    {
+        "id": "9d2e64b5-3d7e-4b3c-9e0a-c12687dfc738",
+        "instructions": "Add the fractions.",
+        "expression": "\\frac{3}{4} + \\frac{2}{3}",
+        "gradeLevel": "middle_school",
+        "topic": "arithmetic",
+        "problemType": "fractions",
+        "created": "2024-10-28",
+        "updated": "2024-10-28",
+        "solution": "\\frac{17}{12}"
+    },
+    {
+        "id": "8f06d9d6-efba-4f4e-8c8b-c1c8370ae447",
+        "instructions": "Differentiate with respect to x.",
+        "expression": "\\frac{d}{dx} (e^x)",
+        "gradeLevel": "undergraduate",
+        "topic": "calculus",
+        "problemType": "immediate_derivative",
+        "created": "2024-10-28",
+        "updated": "2024-10-28",
+        "solution": "e^x"
+    },
+    {
+        "id": "56af31b1-b23d-4b3e-bf68-7df7ae6d6a7b",
+        "instructions": "Solve the integral.",
+        "expression": "\\int \\sin(x) \\, dx",
+        "gradeLevel": "undergraduate",
+        "topic": "calculus",
+        "problemType": "immediate_integral",
+        "created": "2024-10-28",
+        "updated": "2024-10-28",
+        "solution": "-\\cos(x) + C"
+    },
+    {
+        "id": "00bb4df1-eef3-41c9-9b7e-593d06347f1f",
+        "instructions": "Factorize the expression.",
+        "expression": "x^2 - 4",
+        "gradeLevel": "high_school",
+        "topic": "algebra",
+        "problemType": "factorization",
+        "created": "2024-10-28",
+        "updated": "2024-10-28",
+        "solution": "(x - 2)(x + 2)"
+    },
+    {
+        "id": "b847017f-47a1-48f1-823f-4d1d70d71fb8",
+        "instructions": "Expand the expression.",
+        "expression": "(x - 4)^2",
+        "gradeLevel": "high_school",
+        "topic": "algebra",
+        "problemType": "expansion",
+        "created": "2024-10-28",
+        "updated": "2024-10-28",
+        "solution": "x^2 - 8x + 16"
+    },
+    {
+        "id": "276d1f6d-b315-466b-b832-2b2c5f5b88c2",
+        "instructions": "Evaluate the limit.",
+        "expression": "\\lim_{x \\to 0} \\frac{\\sin(x)}{x}",
+        "gradeLevel": "undergraduate",
+        "topic": "calculus",
+        "problemType": "limits",
+        "created": "2024-10-28",
+        "updated": "2024-10-28",
+        "solution": "1"
+    },
+    {
+        "id": "f9eb6dbd-e6bc-4d6c-87f8-47db6b737f6d",
+        "instructions": "Convert the percentage to a fraction.",
+        "expression": "25%",
+        "gradeLevel": "middle_school",
+        "topic": "arithmetic",
+        "problemType": "percentages",
+        "created": "2024-10-28",
+        "updated": "2024-10-28",
+        "solution": "\\frac{1}{4}"
+    },
+    {
+        "id": "b64f4e3c-7628-4c76-9392-302e7433d7fb",
+        "instructions": "Simplify the expression.",
+        "expression": "\\frac{4x^2 - 9}{2x - 3}",
+        "gradeLevel": "high_school",
+        "topic": "algebra",
+        "problemType": "simplification",
+        "created": "2024-10-28",
+        "updated": "2024-10-28",
+        "solution": "2x + 3"
+    },
+    {
+        "id": "c370b6e5-bac2-4b8f-927b-d64f882d1767",
+        "instructions": "Add the fractions.",
+        "expression": "\\frac{5}{8} + \\frac{3}{8}",
+        "gradeLevel": "middle_school",
+        "topic": "arithmetic",
+        "problemType": "fractions",
+        "created": "2024-10-28",
+        "updated": "2024-10-28",
+        "solution": "1"
+    },
+    {
+        "id": "1084c8f6-8cfa-4b41-85e1-8d5742b14b8b",
+        "instructions": "Differentiate with respect to x.",
+        "expression": "\\frac{d}{dx} (\\tan(x))",
+        "gradeLevel": "undergraduate",
+        "topic": "calculus",
+        "problemType": "immediate_derivative",
+        "created": "2024-10-28",
+        "updated": "2024-10-28",
+        "solution": "\\sec^2(x)"
+    }
+]
