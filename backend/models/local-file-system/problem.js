@@ -7,7 +7,7 @@
  * deleting, and updating existing problems.
  *
  * Methods:
- * - getAll(filters = {})                           : Retrieves all problems, applying optional filters for problem_type, grade_level, or topic.
+ * - getAll(id, topic, problemType, gradeLevel)                           : Retrieves all problems, applying optional filters for problem_type, grade_level, or topic.
  * - getById({ id })                                 : Returns a specific problem by its ID.
  * - create(input)                                   : Creates and saves a new problem with a unique ID.
  * - delete({ id })                                  : Deletes a problem based on its ID.

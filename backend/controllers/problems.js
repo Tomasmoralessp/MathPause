@@ -1,3 +1,26 @@
+/**
+ * ProblemController
+ *
+ * This controller manages HTTP requests for mathematical problems stored in a JSON file.
+ * It offers endpoints to retrieve, create, update, and delete problems as part of an MVP.
+ * This temporary file-based structure supports frontend development and will be migrated to a database in the future.
+ *
+ * Methods:
+ * - `getAll(req, res)`: Retrieves all problems with optional filters (`id`, `topic`, `problemType`, `gradeLevel`).
+ * - `random(req, res)`: Returns a random problem, applying optional filters.
+ * - `getById(req, res)`: Fetches a specific problem by its ID.
+ * - `create(req, res)`: Validates and adds a new problem.
+ * - `delete(req, res)`: Deletes a problem by ID.
+ * - `update(req, res)`: Partially updates a problem with valid data.
+ *
+ * Dependencies:
+ * - `ProblemModel`: Provides data access and CRUD operations.
+ * - `validateProblem` / `validatePartialProblem`: Schemas for validating problem data.
+ *
+ * Note:
+ * This is a file-based system for early-stage development; data will transition to a database as the project scales.
+ */
+
 import { ProblemModel } from '../models/local-file-system/problem.js'
 import { validateProblem, validatePartialProblem } from '../schemas/problems.js'
 
