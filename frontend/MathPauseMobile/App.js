@@ -1,6 +1,11 @@
-import React, { useState, useEffect } from 'react'
-import { StyleSheet, View, Text, TextInput } from 'react-native'
+import React, { useState, useEffect, useRef } from 'react'
+import { StyleSheet, View, Text, TextInput, TouchableOpacity, TouchableOpacityComponent } from 'react-native'
 import { MathJaxSvg } from 'react-native-mathjax-html-to-svg'
+import { LinearGradient } from 'expo-linear-gradient'
+import ConfettiCannon from 'react-native-confetti-cannon'
+
+const SUCCESS_MESSAGE = '✅ Correct! You can access the app.'
+const ERROR_MESSAGE = '❌ Incorrect. Try again.'
 
 export default function MathPauseScreen () {
   // Number of states needed:
@@ -9,14 +14,12 @@ export default function MathPauseScreen () {
   // TODO: 3. Problem answer
   // TODO: 4. Answer given by the user
   // TODO: 5. isCorrect to handle if correct or not
-  // TODO: 6. showCursor: to make a blinking animation
   const [probdescription, setProblemDescription] = useState('Evaluate the limit:')
   const [expression, setExpression] = useState('\\int x^2 \\, dx')
-  const [solution, setSolution] = useState('\\frac{1}{3} x^3 + C')
+  const [solution, setSolution] = useState('1')
 
   const [userAnswer, setUserAnswer] = useState('')
   const [isCorrect, setIsCorrect] = useState(null)
-  const [showCursor, setShowCursor] = useState(true)
 
   // TODO: Fetch the math problem and store it to render it afterwards, handle errors too
   const getMathExpression = () => {
@@ -42,17 +45,8 @@ export default function MathPauseScreen () {
   // TODO: Check if the answer provided by the user is correct
   const handleSubmit = () => {
     const correct = userAnswer === solution
-    setIsCorrect(true)
+    setIsCorrect(correct)
   }
-
-  // TODO: Effect to make a blinking animation
-  useEffect(() => {
-    const interval = setInterval(() => {
-      // Cambiamos de true a false cada 500 ms
-      setShowCursor((prev) => !prev)
-    }, 500)
-    return () => clearInterval(interval)
-  }, [])
 
   return (
     <View style={styles.container}>
@@ -73,12 +67,27 @@ export default function MathPauseScreen () {
           placeholderTextColor="#666"
           value={userAnswer}
           onChangeText={setUserAnswer}
-
         />
-        {userAnswer === '' && (
-          <Text style={[styles.cursor, showCursor ? styles.visible : styles.hidden]}> | </Text>
+        <TouchableOpacity onPress={handleSubmit}>
+          <LinearGradient
+            colors={['#8B5CF6', '#EC4899']}
+            start={{ x: 0, y: 0 }}
+            end={{ x: 1, y: 0 }}
+            style={styles.button}
+          >
+            <Text style={styles.buttonText}> Submit </Text>
+          </LinearGradient>
+        </TouchableOpacity>
+        {isCorrect !== null && (
+          <Text style={[styles.resultText, isCorrect ? styles.correct : styles.incorrect]}>
+            {isCorrect ? SUCCESS_MESSAGE : ERROR_MESSAGE}
+          </Text>
         )}
+         {isCorrect && (
+          <ConfettiCannon count={100} origin={{ x: 200, y: 0 }} fadeOut />
+         )}
       </View>
+
   </View>
   )
 }
@@ -127,16 +136,30 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     width: '100%'
   },
-  cursor: {
-    position: 'absolute',
-    fontSize: 18,
-    color: '#6B7280'
+  button: {
+    marginTop: 20,
+    alignSelf: 'center',
+    paddingVertical: 12,
+    paddingHorizontal: 20,
+    borderRadius: 25
   },
-  visible: {
-    opacity: 1
+  buttonText: {
+    color: 'white',
+    fontSize: 16,
+    fontWeight: '600',
+    textAlign: 'center'
   },
-  hidden: {
-    opacity: 0
+  resultText: {
+    marginTop: 20,
+    fontSize: 16,
+    textAlign: 'center',
+    fontWeight: 'bold'
+  },
+  correct: {
+    color: '#10B981'
+  },
+  incorrect: {
+    color: '#EF4444'
   }
 
 })
