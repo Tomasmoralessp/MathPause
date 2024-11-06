@@ -1,63 +1,103 @@
-import React, { useState, useEffect, useRef } from 'react'
-import { StyleSheet, View, Text, TextInput, TouchableOpacity, TouchableOpacityComponent } from 'react-native'
+import React, { useState, useEffect } from 'react'
+import { StyleSheet, View, Text, TextInput, TouchableOpacity, ScrollView } from 'react-native'
 import { MathJaxSvg } from 'react-native-mathjax-html-to-svg'
 import { LinearGradient } from 'expo-linear-gradient'
 import ConfettiCannon from 'react-native-confetti-cannon'
 
 const SUCCESS_MESSAGE = '✅ Correct! You can access the app.'
 const ERROR_MESSAGE = '❌ Incorrect. Try again.'
+const API_URL = 'http://192.168.176.66:1234'
 
 export default function MathPauseScreen () {
-  // Number of states needed:
-  // TODO: 1. Problem description
-  // TODO: 2. Problem math expression
-  // TODO: 3. Problem answer
-  // TODO: 4. Answer given by the user
-  // TODO: 5. isCorrect to handle if correct or not
-  const [probdescription, setProblemDescription] = useState('Evaluate the limit:')
-  const [expression, setExpression] = useState('\\int x^2 \\, dx')
-  const [solution, setSolution] = useState('1')
+  const [problem, setProblem] = useState({
+    id: '276d1f6d-b315-466b-b832-2b2c5f5b88c2',
+    instructions: 'Evaluate the limit.',
+    expression: '\\lim_{x \\to 0} \\frac{\\sin(x)}{x}',
+    gradeLevel: 'undergraduate',
+    topic: 'calculus',
+    problemType: 'limits',
+    created: '2024-10-28',
+    updated: '2024-10-28',
+    solution: '1'
+  })
 
   const [userAnswer, setUserAnswer] = useState('')
   const [isCorrect, setIsCorrect] = useState(null)
+  const [newProblemCounter, setNewProblemCounter] = useState(0)
 
-  // TODO: Fetch the math problem and store it to render it afterwards, handle errors too
-  const getMathExpression = () => {
-    fetch('http:// of my api goes here')
-      .then(response => response.json())
-      .then(data => setExpression(data.expression))
+  const fetchNewProblem = () => {
+    fetch(`${API_URL}/problems/random`, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    })
+      .then(response => {
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`)
+        }
+        return response.json()
+      })
+      .then(data => setProblem(data))
+      .catch(error => {
+        console.error('Error fetching problem data:', error)
+      })
   }
 
-  const getMathProblemDescription = () => {
-    fetch('http:// of my api here')
-      .then(response => response.json())
-      .then(data => setProblemDescription(data.instructions))
-  }
+  useEffect(() => {
+    fetchNewProblem()
+    setUserAnswer('')
+    setIsCorrect(null)
+    setNewProblemCounter(0)
+  }, [])
 
-  const getProblemSolution = () => {
-    fetch('http://your-api-url-goes-here')
-      .then(response => response.json())
-      .then(data => setSolution(data.solution))
-  }
-
-  const mathProblem = '\\lim_{x \\to 0} \\frac{\\sin x}{x}'
-
-  // TODO: Check if the answer provided by the user is correct
   const handleSubmit = () => {
-    const correct = userAnswer === solution
+    const correct = userAnswer === problem.solution
     setIsCorrect(correct)
+    if (correct) {
+      newProblemCounter((prevCounter) => {
+        const newCounter = 0
+        return newCounter
+      })
+    }
+  }
+
+  const handleNewProblem = () => {
+    setNewProblemCounter((prevCounter) => {
+      const newCounter = prevCounter + 1
+      if (newCounter <= 3) {
+        setIsCorrect(null)
+        setUserAnswer('')
+        fetchNewProblem()
+      } else {
+        console.log('Te quedaste sin problemas bro')
+      }
+      return newCounter
+    }
+    )
   }
 
   return (
-    <View style={styles.container}>
+    <ScrollView contentContainerStyle={styles.container}>
+      <View style={styles.tagsContainer}>
+        <Text style={styles.tag} numberOfLines={1} adjustsFontSizeToFit minimumFontScale={0.8}>
+          #{problem.topic}
+        </Text>
+        <Text style={styles.tag} numberOfLines={1} adjustsFontSizeToFit minimumFontScale={0.8}>
+          #{problem.problemType}
+        </Text>
+        <Text style={styles.tag} numberOfLines={1} adjustsFontSizeToFit minimumFontScale={0.8}>
+          #{problem.gradeLevel}
+        </Text>
+      </View>
       <View style={styles.card}>
-        <Text style={styles.probDescription}> {probdescription} </Text>
+        <Text style={styles.probDescription}>{problem.instructions}</Text>
         <MathJaxSvg
-        color='white'
-        fontSize={30}
-        style={styles.mathContainer}
+          color='white'
+          fontSize={25}
+          style={styles.mathContainer}
         >
-          {`$$${mathProblem}$$`}
+          {`$$${problem.expression}$$`}
         </MathJaxSvg>
       </View>
       <View style={styles.inputContainer}>
@@ -68,38 +108,57 @@ export default function MathPauseScreen () {
           value={userAnswer}
           onChangeText={setUserAnswer}
         />
-        <TouchableOpacity onPress={handleSubmit}>
-          <LinearGradient
-            colors={['#8B5CF6', '#EC4899']}
-            start={{ x: 0, y: 0 }}
-            end={{ x: 1, y: 0 }}
-            style={styles.button}
-          >
-            <Text style={styles.buttonText}> Submit </Text>
-          </LinearGradient>
-        </TouchableOpacity>
+        <View style={styles.buttonContainer}>
+          <TouchableOpacity onPress={handleSubmit}>
+            <LinearGradient
+              colors={['#8B5CF6', '#EC4899']}
+              start={{ x: 0, y: 0 }}
+              end={{ x: 1, y: 0 }}
+              style={styles.button}
+            >
+              <Text style={styles.buttonText}>Submit</Text>
+            </LinearGradient>
+          </TouchableOpacity>
+          <TouchableOpacity onPress={handleNewProblem} style={styles.newProblemButton}>
+            <Text style={styles.newProblemButtonText}>{newProblemCounter < 3 ? '🔁' : '⛔️'}</Text>
+          </TouchableOpacity>
+        </View>
         {isCorrect !== null && (
           <Text style={[styles.resultText, isCorrect ? styles.correct : styles.incorrect]}>
             {isCorrect ? SUCCESS_MESSAGE : ERROR_MESSAGE}
           </Text>
         )}
-         {isCorrect && (
+        {isCorrect && (
           <ConfettiCannon count={100} origin={{ x: 200, y: 0 }} fadeOut />
-         )}
+        )}
       </View>
-
-  </View>
+    </ScrollView>
   )
 }
 
-// TODO: Styles
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    flexGrow: 1,
     backgroundColor: '#111827',
     alignItems: 'center',
     justifyContent: 'center',
     padding: 20
+  },
+  tagsContainer: {
+    flexDirection: 'row',
+    flexWrap: 'nowrap',
+    justifyContent: 'center',
+    marginBottom: 20
+  },
+  tag: {
+    backgroundColor: '#374151',
+    color: '#D1D5DB',
+    paddingVertical: 4,
+    paddingHorizontal: 12,
+    borderRadius: 9999,
+    marginRight: 8,
+    marginBottom: 8,
+    flexShrink: 1
   },
   card: {
     gap: 15,
@@ -109,17 +168,17 @@ const styles = StyleSheet.create({
     marginBottom: 16,
     alignItems: 'center',
     justifyContent: 'center',
-    width: '80%'
+    width: '80%',
+    borderWidth: 1,
+    borderColor: 'white'
   },
-
   probDescription: {
-    fontSize: 25,
+    fontSize: 20,
     color: 'white',
     fontWeight: 'bold'
-
   },
   mathContainer: {
-    color: 'white'
+    // You can add specific styles for the math container if needed
   },
   inputContainer: {
     position: 'relative',
@@ -134,11 +193,15 @@ const styles = StyleSheet.create({
     fontSize: 18,
     padding: 10,
     textAlign: 'center',
-    width: '100%'
+    width: '100%',
+    marginBottom: 20
+  },
+  buttonContainer: {
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center'
   },
   button: {
-    marginTop: 20,
-    alignSelf: 'center',
     paddingVertical: 12,
     paddingHorizontal: 20,
     borderRadius: 25
@@ -148,6 +211,13 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontWeight: '600',
     textAlign: 'center'
+  },
+  newProblemButton: {
+    marginLeft: 10,
+    padding: 10
+  },
+  newProblemButtonText: {
+    fontSize: 24
   },
   resultText: {
     marginTop: 20,
@@ -161,5 +231,4 @@ const styles = StyleSheet.create({
   incorrect: {
     color: '#EF4444'
   }
-
 })

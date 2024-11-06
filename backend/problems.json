@@ -46,7 +46,7 @@
     {
         "id": "ac12b64b-2349-4f44-9e43-4239d450bb7d",
         "instructions": "Calculate the limit.",
-        "expression": "\\lim_{x \\to 2} (x^2 - 4)/(x - 2)",
+        "expression": "\\lim_{x \\to 2} \\frac{x^2 - 4}{x - 2}",
         "gradeLevel": "undergraduate",
         "topic": "calculus",
         "problemType": "limits",
