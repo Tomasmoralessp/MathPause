@@ -1,0 +1,1 @@
+// Tarjetas para el rendimiento por tema, como Algebra, Geometry, etc., en la pantalla de Progress. Este componente puede recibir propiedades para el nombre del tema, el progreso, y la precisión en ese tema.

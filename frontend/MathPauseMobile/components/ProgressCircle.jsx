@@ -1,0 +1,1 @@
+// Círculo de progreso, como el que aparece en la pantalla de inicio para mostrar el porcentaje de objetivo diario. Este componente puede recibir propiedades como progress (porcentaje) y label (texto debajo del porcentaje).
