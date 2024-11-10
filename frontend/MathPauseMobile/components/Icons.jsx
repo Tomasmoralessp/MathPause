@@ -14,3 +14,6 @@ export const AchievementsIcon = (props) => (
   <Icon baseName="ribbon" {...props} />
 );
 export const SettingsIcon = (props) => <Icon baseName="settings" {...props} />;
+export const CheckMarkIcon = (props) => (
+  <Icon baseName="checkmark" {...props} />
+);
