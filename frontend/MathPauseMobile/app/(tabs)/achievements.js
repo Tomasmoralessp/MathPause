@@ -17,6 +17,12 @@ export default function Achievements() {
           checked={true}
         />
         <AchievementCard
+          emoji="💀"
+          title="Death Row"
+          subtitle={"Solve 10000 problems"}
+          checked={false}
+        />
+        <AchievementCard
           emoji="🔥"
           title="Consisting Learner"
           subtitle={"Solve problems for 7 consecutive days"}
@@ -41,7 +47,7 @@ export default function Achievements() {
           checked={false}
         />
 
-        <TimeSavedSummary> </TimeSavedSummary>
+        <TimeSavedSummary TimeSaved={90}> </TimeSavedSummary>
       </ScrollView>
     </SafeAreaView>
   );
