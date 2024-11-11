@@ -47,7 +47,7 @@ export default function Achievements() {
           checked={false}
         />
 
-        <TimeSavedSummary TimeSaved={90}> </TimeSavedSummary>
+        <TimeSavedSummary TimeSaved={270}> </TimeSavedSummary>
       </ScrollView>
     </SafeAreaView>
   );
