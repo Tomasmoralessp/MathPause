@@ -8,7 +8,7 @@ const AchievementCard = ({ emoji, title, subtitle, checked }) => {
       style={{
         opacity: checked ? 1 : 0.5, // Cambia la opacidad si no está marcado
       }}
-      className="flex-row h-24 w-96 bg-slate-800 justify-between items-center rounded-md gap-2 mt-5"
+      className="flex-row h-24 w-96 bg-slate-800 justify-between items-center rounded-md gap-2 mb-5"
     >
       <View className="flex-row">
         <Text className="text-4xl ml-2"> {emoji} </Text>
